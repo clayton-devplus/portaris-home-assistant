@@ -13,7 +13,11 @@ class PortarisApiError(Exception):
 
 
 class PortarisAuthError(PortarisApiError):
-    """Token ausente, inválido, revogado, expirado ou sem escopo (401/403)."""
+    """401 — token ausente, inválido, revogado ou expirado. Reautenticar pode resolver."""
+
+
+class PortarisForbiddenError(PortarisApiError):
+    """403 — token válido, mas sem o escopo exigido. Reautenticar NÃO resolve."""
 
 
 class PortarisClient:
@@ -36,8 +40,10 @@ class PortarisClient:
                 params=params,
                 timeout=self._timeout,
             ) as resp:
-                if resp.status in (401, 403):
-                    raise PortarisAuthError(f"Autenticação recusada ({resp.status}).")
+                if resp.status == 401:
+                    raise PortarisAuthError("Token inválido, revogado ou expirado (401).")
+                if resp.status == 403:
+                    raise PortarisForbiddenError("Token sem o escopo necessário (403).")
                 resp.raise_for_status()
                 return await resp.json()
         except aiohttp.ClientError as err:
@@ -69,8 +75,10 @@ class PortarisClient:
                 headers=self._headers,
                 timeout=self._timeout,
             ) as resp:
-                if resp.status in (401, 403):
-                    raise PortarisAuthError(f"Autenticação recusada ({resp.status}).")
+                if resp.status == 401:
+                    raise PortarisAuthError("Token inválido, revogado ou expirado (401).")
+                if resp.status == 403:
+                    raise PortarisForbiddenError("Token sem o escopo necessário (403).")
                 resp.raise_for_status()
         except aiohttp.ClientError as err:
             raise PortarisApiError(str(err)) from err

@@ -12,7 +12,9 @@ SCOPE_STATE_READ = "state:read"
 SCOPE_DOOR_UNLOCK = "door:unlock"
 
 # Intervalo de polling do estado (portas/leitores/eventos), em segundos.
-UPDATE_INTERVAL = 30
+# BASE em operação normal; sobe até MAX com backoff exponencial quando a API falha.
+BASE_INTERVAL = 30
+MAX_INTERVAL = 300
 
 # Tipos de evento de acesso (espelham AccessEventType no backend).
 EVENT_TYPES = [

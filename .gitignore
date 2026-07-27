@@ -5,3 +5,6 @@ venv/
 .DS_Store
 .mypy_cache/
 .ruff_cache/
+
+# staging dos assets do home-assistant/brands (não faz parte do plugin)
+.brands/
