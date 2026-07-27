@@ -23,3 +23,6 @@ jobs:
       - uses: hacs/action@main
         with:
           category: integration
+          # "brands" exige um PR no repo home-assistant/brands (adiciona o ícone do domínio
+          # "portaris"). Ignorado até esse PR ser mergeado; o resto da validação continua valendo.
+          ignore: brands
