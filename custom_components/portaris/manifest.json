@@ -1,0 +1,12 @@
+{
+  "domain": "portaris",
+  "name": "Portaris",
+  "codeowners": ["@devplus"],
+  "config_flow": true,
+  "documentation": "https://github.com/devplus/portaris-home-assistant",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/devplus/portaris-home-assistant/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

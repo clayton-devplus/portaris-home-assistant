@@ -1,0 +1,42 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Portaris",
+        "description": "Create a token under Settings → Integrations in the Portaris panel. It is shown only once.",
+        "data": {
+          "host": "Portaris address",
+          "token": "Integration token"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Renew Portaris token",
+        "description": "The previous token is no longer valid. Generate a new one in the panel and paste it below.",
+        "data": {
+          "token": "Integration token"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to Portaris.",
+      "invalid_auth": "Invalid, revoked or expired token."
+    },
+    "abort": {
+      "already_configured": "This Portaris account is already configured."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "reader_online": { "name": "Connectivity" }
+    },
+    "button": {
+      "unlock": { "name": "Unlock" }
+    },
+    "sensor": {
+      "last_heartbeat": { "name": "Last heartbeat" }
+    },
+    "event": {
+      "access": { "name": "Access" }
+    }
+  }
+}

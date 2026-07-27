@@ -1,0 +1,42 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectar ao Portaris",
+        "description": "Crie um token em Configurações → Integrações no painel do Portaris. Ele é mostrado uma única vez.",
+        "data": {
+          "host": "Endereço do Portaris",
+          "token": "Token de integração"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Renovar token do Portaris",
+        "description": "O token anterior deixou de valer. Gere um novo no painel e cole abaixo.",
+        "data": {
+          "token": "Token de integração"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Não foi possível conectar ao Portaris.",
+      "invalid_auth": "Token inválido, revogado ou expirado."
+    },
+    "abort": {
+      "already_configured": "Esta conta do Portaris já está configurada."
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "reader_online": { "name": "Conectividade" }
+    },
+    "button": {
+      "unlock": { "name": "Abrir" }
+    },
+    "sensor": {
+      "last_heartbeat": { "name": "Último heartbeat" }
+    },
+    "event": {
+      "access": { "name": "Acesso" }
+    }
+  }
+}
